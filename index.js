@@ -9,6 +9,9 @@ const cors = require('cors')
 const helmet = require("helmet");
 const compression = require('compression')
 
+
+cloudinary.config()
+
 app.use(compression())
 app.use(helmet());
 app.use(cors())
@@ -33,8 +36,6 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage })
-
-const uploads = [{ genre1: 'Comedy' }, { genre2: 'Action' }]
 
 app.get('*', (req, res) => {
   res.sendFile(`${__dirname}\\dist\\index.html`)
