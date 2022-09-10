@@ -51,7 +51,11 @@ app.post('/', upload.single('avatar'), async (req, res) => {
     const result = await cloudinary.uploader.upload(
       `${__dirname}\\images\\${file}`
     )
-    res.send(result.secure_url)
+    if (result) {
+      res.send(result.secure_url)
+    } else {
+      res.send('Somethin failed')
+    }
   } catch (ex) {
     console.log(ex)
   }
