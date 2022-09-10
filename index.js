@@ -17,7 +17,6 @@ cloudinary.config({
 
 // console.log(process.env.CLOUDINARY_CLOUD_NAME)
 
-
 app.use(compression())
 app.use(helmet())
 app.use(cors())
@@ -54,12 +53,9 @@ app.post('/', upload.single('avatar'), async (req, res) => {
     const result = await cloudinary.uploader.upload(
       `${__dirname}\\images\\${file}`
     )
-    if (result) {
-      res.send(result.secure_url)
-    } else {
-      res.send('Somethin failed')
-    }
+    res.send(result.secure_url)
   } catch (ex) {
+    console.log(ex)
     res.send(ex)
   }
 })
