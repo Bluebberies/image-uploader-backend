@@ -17,9 +17,9 @@ cloudinary.config({
 
 // console.log(process.env.CLOUDINARY_CLOUD_NAME)
 
-app.use(compression())
-app.use(helmet())
-app.use(cors())
+// app.use(compression())
+// app.use(helmet())
+// app.use(cors())
 
 function checkAndDelete () {
   const file = fs.readdirSync('images')
