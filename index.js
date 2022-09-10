@@ -57,7 +57,7 @@ app.post('/', upload.single('avatar'), async (req, res) => {
       res.send('Somethin failed')
     }
   } catch (ex) {
-    console.log(ex)
+    res.send(ex)
   }
 })
 
