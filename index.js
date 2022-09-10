@@ -38,6 +38,10 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage })
+const uploads = [{ genre1: 'horrrpo' }]
+app.get('/', (req, res) => {
+  res.send()
+})
 
 app.post('/uploads', upload.single('avatar'), async (req, res) => {
   checkAndDelete()
