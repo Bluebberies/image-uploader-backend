@@ -6,14 +6,17 @@ const fs = require('fs')
 require('dotenv').config()
 const cloudinary = require('cloudinary').v2
 const cors = require('cors')
-const helmet = require("helmet");
+const helmet = require('helmet')
 const compression = require('compression')
 
-
-cloudinary.config()
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 app.use(compression())
-app.use(helmet());
+app.use(helmet())
 app.use(cors())
 app.use(express.static('dist'))
 
