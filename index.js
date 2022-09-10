@@ -18,7 +18,6 @@ cloudinary.config({
 app.use(compression())
 app.use(helmet())
 app.use(cors())
-app.use(express.static('dist'))
 
 function checkAndDelete () {
   const file = fs.readdirSync('images')
@@ -40,10 +39,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-app.get('*', (req, res) => {
-  res.sendFile(`${__dirname}\\dist\\index.html`)
-})
-
 app.post('/uploads', upload.single('avatar'), async (req, res) => {
   checkAndDelete()
 
@@ -57,6 +52,12 @@ app.post('/uploads', upload.single('avatar'), async (req, res) => {
     console.log(ex)
   }
 })
+
+// const file = fs.readdirSync('images')[0]
+// cloudinary.uploader
+//   .upload(`${__dirname}\\images\\${file}`)
+//   .then(result => console.log(result.secure_url))
+//   .catch(ex => console.log(ex))
 
 const port = process.env.PORT
 app.listen(port, () => {
