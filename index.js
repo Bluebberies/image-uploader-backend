@@ -9,17 +9,23 @@ const cors = require('cors')
 const helmet = require('helmet')
 const compression = require('compression')
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
-})
+// cloudinary.config({
+//   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+//   api_key: process.env.CLOUDINARY_API_KEY,
+//   api_secret: process.env.CLOUDINARY_API_SECRET
+// })
+
+cloudinary.config({ 
+  cloud_name: 'bluebberies', 
+  api_key: '264113968858469', 
+  api_secret: 'BY97Eajo0tSZxWi2rqOre_voW9c' 
+});
 
 // console.log(process.env.CLOUDINARY_CLOUD_NAME)
 
-// app.use(compression())
-// app.use(helmet())
-// app.use(cors())
+app.use(compression())
+app.use(helmet())
+app.use(cors())
 
 function checkAndDelete () {
   const file = fs.readdirSync('images')
