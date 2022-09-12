@@ -57,7 +57,8 @@ app.post('/', upload.single('avatar'), async (req, res) => {
   try {
     const file = fs.readdirSync('images')[0]
     const result = await cloudinary.uploader.upload(
-      `${__dirname}\\images\\${file}`
+      // `${__dirname}\\images\\${file}`
+      `./images/${file}`
     )
     res.send(result.secure_url)
   } catch (ex) {
